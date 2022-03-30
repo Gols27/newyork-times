@@ -1,0 +1,37 @@
+<div class="left-content" *ngIf="movieDetail">
+    <section class="section">
+        <div class="img-container">
+            <img src="{{ movieDetail.poster }}" />
+        </div>
+        <div class="right-content">
+            <div class="outer">
+                <div class="left">
+                    {{ movieDetail.title }}
+                    <span class="badge rounded-pill bg-primary" *ngIf="movieDetail.imdb_rating>=9">Superhit</span>
+                    <span *ngIf="movieDetail.status" class="badge rounded-pill"
+                        [ngClass]="{'bg-primary': movieDetail.status === 'Liked', 'bg-danger': movieDetail.status === 'Disliked'}">
+                        {{movieDetail.status}}
+                    </span>
+                </div>
+
+                <div class="right">
+                    <app-movie-rating rating="{{ movieDetail.imdb_rating }}"></app-movie-rating>
+                </div>
+            </div>
+            <p class="movie-detail">
+                {{ movieDetail.released_on | date: "yyyy" }} |
+                {{ movieDetail.length }} |
+                {{ movieDetail.director }}
+                <button lass="btn btn-danger" lass="btn btn-danger" title="userChoice" (click)="review(true)"><i
+                        class="fa fa-thumbs-o-up"></i></button>
+                <button title="userChoice" (click)="review(false)"><i class="fa fa-thumbs-o-down"></i></button>
+            </p>
+            CAST:
+            <span class="cast" *ngFor="let cast of movieDetail.cast">{{ cast }} |
+            </span>
+            <p class="movie-description">
+                Movie Descrption: {{ movieDetail.overview }}
+            </p>
+        </div>
+    </section>
+</div>

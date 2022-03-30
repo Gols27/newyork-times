@@ -1,0 +1,58 @@
+<ng-container *ngIf="!isFiltered; else filteredResult">
+    <div class="movie-container" *ngFor="let genre of genreList">
+        <h5 class="genre">{{ genre }}</h5>
+        <div class="movie-wrapper">
+            <div class="movie" *ngFor="let movie of movieList | filter: genre:'genres'"
+                [ngClass]="{'bordered': movie.imdb_rating>=9}">
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <a class="img-container" routerLink="/movie/{{ movie.id }}" routerLinkActive="active">
+                                <img src="{{ movie.backdrop }}" /></a>
+                            <span class="caption">{{ movie.title }}</span>
+                            <span class="badge rounded-pill bg-primary" *ngIf="movie.imdb_rating>=9">Superhit</span>
+                            <span *ngIf="movie?.status" class="badge rounded-pill"
+                                [ngClass]="{'bg-primary': movie?.status === 'Liked', 'bg-danger': movie?.status === 'Disliked'}">
+                                {{movie?.status}}
+                            </span>
+                        </div>
+                        <div class="flip-card-back">
+                            <a class="img-container" routerLink="/movie/{{ movie.id }}" routerLinkActive="active">
+
+                                {{ movie.overview}}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-container>
+
+<ng-template #filteredResult>
+    <div class="movie-wrapper">
+        <div class="movie" *ngFor="let movie of movieList | filter: genre:'genres'"
+            [ngClass]="{'bordered': movie.imdb_rating>=9}">
+            <h5 class="genre">{{ movie.genres }}</h5>
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <a class="img-container" routerLink="/movie/{{ movie.id }}" routerLinkActive="active">
+                            <img src="{{ movie.backdrop }}" /></a>
+                        <span class="caption">{{ movie.title }}</span>
+                        <span class="badge rounded-pill bg-primary" *ngIf="movie.imdb_rating>=9">Superhit</span>
+                        <span *ngIf="movie?.status" class="badge rounded-pill"
+                            [ngClass]="{'bg-primary': movie?.status === 'Liked', 'bg-danger': movie?.status === 'Disliked'}">
+                            {{movie?.status}}
+                        </span>
+                    </div>
+                    <div class="flip-card-back">
+                        <a class="img-container" routerLink="/movie/{{ movie.id }}" routerLinkActive="active">
+                            {{ movie.overview}}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>

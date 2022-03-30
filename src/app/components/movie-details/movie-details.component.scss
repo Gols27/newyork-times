@@ -1,0 +1,42 @@
+.left-content {
+  width: 80%;
+  margin: 0 auto;
+  padding-top: 80px;
+  z-index: 0;
+  .section {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    .right-content {
+      width: 100%;
+      margin-bottom: 20px;
+      text-align: left;
+      padding-left: 40px;
+      .outer {
+        font-size: 32px;
+        font-weight: bold;
+        .left {
+          width: 48%;
+          float: left;
+        }
+        .right {
+          width: 48%;
+          float: right;
+          text-align: right;
+        }
+      }
+      .movie-detail {
+        font-size: 20px;
+        font-weight: bold;
+      }
+      .cast {
+        font-size: 18px;
+        padding-right: 8px;
+      }
+      .movie-description {
+        font-size: 18px;
+        padding-right: 8px;
+      }
+    }
+  }
+}

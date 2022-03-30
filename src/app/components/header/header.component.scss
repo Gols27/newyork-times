@@ -1,0 +1,13 @@
+.inline-icon {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  .icon-color {
+    color: white;
+    margin-right: 10px;
+  }
+}
+
+.search-width {
+  width: 25%;
+}
